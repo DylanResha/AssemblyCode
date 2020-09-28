@@ -52,16 +52,22 @@
     52 0000006B 0315[20000000]                  add edx,[dArray+16]
     53 00000071 8915[27000000]                  mov [dArraySum],edx
     54                                  break3:
-    55                                  
-    56 00000077 8B0D[24000000]          	mov ecx,[bArraySum]
-    57 0000007D 030D[25000000]          	add ecx,[wArraySum]
-    58 00000083 030D[27000000]          	add ecx,[dArraySum]
-    59                                  
-    60 00000089 890D[2B000000]          	mov [grandTotal], ecx
-    61                                  break4:
+    55                                  	
+    56 00000077 A0[24000000]            	mov al,[bArraySum]
+    57 0000007C 668B1D[25000000]        	mov bx,[wArraySum]
+    58 00000083 8B0D[27000000]          	mov ecx,[dArraySum]
+    59                                  	
+    60 00000089 0FBEC0                  	MOVSX eax,al
+    61 0000008C 0FBFDB                  	MOVSX ebx,bx	
     62                                  
-    63                                  lastBreak:
-    64                                  ; Normal termination code
-    65 0000008F B801000000              mov eax, 1
-    66 00000094 BB00000000              mov ebx, 0
-    67 00000099 CD80                    int 80h
+    63 0000008F 01C1                    	add ecx,eax
+    64 00000091 01D9                    	add ecx,ebx
+    65                                  
+    66 00000093 890D[2B000000]          	mov [grandTotal], ecx
+    67                                  break4:
+    68                                  
+    69                                  lastBreak:
+    70                                  ; Normal termination code
+    71 00000099 B801000000              mov eax, 1
+    72 0000009E BB00000000              mov ebx, 0
+    73 000000A3 CD80                    int 80h

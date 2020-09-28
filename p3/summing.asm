@@ -49,10 +49,16 @@ break2:
         add edx,[dArray+16]
         mov [dArraySum],edx
 break3:
+	
+	mov al,[bArraySum]
+	mov bx,[wArraySum]
+	mov ecx,[dArraySum]
+	
+	MOVSX eax,al
+	MOVSX ebx,bx	
 
-	mov ecx,[bArraySum]
-	add ecx,[wArraySum]
-	add ecx,[dArraySum]
+	add ecx,eax
+	add ecx,ebx
 
 	mov [grandTotal], ecx
 break4:
