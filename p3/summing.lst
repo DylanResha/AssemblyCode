@@ -60,7 +60,7 @@
     60 00000089 890D[2B000000]          	mov [grandTotal], ecx
     61                                  break4:
     62                                  
-    63                                  
+    63                                  lastBreak:
     64                                  ; Normal termination code
     65 0000008F B801000000              mov eax, 1
     66 00000094 BB00000000              mov ebx, 0

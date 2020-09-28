@@ -57,7 +57,7 @@ break3:
 	mov [grandTotal], ecx
 break4:
 
-
+lastBreak:
 ; Normal termination code
 mov eax, 1
 mov ebx, 0
