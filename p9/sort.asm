@@ -30,22 +30,25 @@ popa
 pusha
 mov ebx,0
 mov ecx,%2
+;mov esp,%1
 
 %%outter:
 %%inner:
-	mov eax,[%1+ebx]
-	mov edx,[%1+ebx+1]
+;Print nl,4;;;visual debug
+;PrintArray nums,numslen
+	mov al,[%1+ebx]
+	mov dl,[%1+ebx+1]
 	
-	cmp edx,eax
-	jl 	%%true
+	cmp dl,al
+	jb 	%%true
 	jmp %%false
 
 	%%true:
-	  mov [%1+ebx+1],eax
-	  mov [%1+ebx],edx
+	  mov [%1+ebx+1],al
+	  mov [%1+ebx],dl
 	%%false:
 	inc ebx	
-	cmp ebx,%2
+	cmp ebx,%2-1
 	jl	%%inner
 
 mov ebx,0
@@ -59,6 +62,7 @@ SECTION .data
 nums:	db	100, 200, 5, 10, 0, 88, 22; should work with more
 numslen:	EQU	($-nums)
 
+nl: db	"   ",10
 output:	db	"   ",10
 hundred: db	100
 ten: db		10
